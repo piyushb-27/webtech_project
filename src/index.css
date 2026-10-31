@@ -1,3 +1,20 @@
+:root {
+  --primary: #006878;
+  --primary-hover: #005764;
+  --primary-container: #54acbf;
+  --primary-light: #e0f7fa;
+  --surface: #f6faff;
+  --surface-card: #ffffff;
+  --surface-low: #eff4fb;
+  --surface-dim: #dde3ea;
+  --surface-border: #e3e9ef;
+  --text-main: #161c21;
+  --text-muted: #6e797c;
+  --text-variant: #3e484b;
+  --font-headline: 'Manrope', 'Inter', system-ui, sans-serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -5,16 +22,23 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #f5f5f5;
-  color: #333;
+  font-family: var(--font-sans);
+  background-color: var(--surface);
+  color: var(--text-main);
   min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 #root {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-headline);
+  color: var(--text-main);
 }
 
 a {
@@ -25,8 +49,27 @@ a {
 button {
   cursor: pointer;
   font-family: inherit;
+  border: none;
+  background: none;
 }
 
 input, select, textarea {
   font-family: inherit;
+}
+
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+  vertical-align: middle;
 }
