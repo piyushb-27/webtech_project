@@ -184,11 +184,6 @@ function Deals() {
       {/* Top Page Header & Actions */}
       <div className="deals-header-row">
         <div className="deals-heading">
-          <div className="title-with-pill">
-            <span className="liquidity-tag">
-              PORTFOLIO TRANSACTIONS • LEDGER
-            </span>
-          </div>
           <div className="title-count-row">
             <h1>Deals Pipeline</h1>
             <span className="total-pipeline-badge">
@@ -196,8 +191,50 @@ function Deals() {
             </span>
           </div>
           <p className="deals-subheading">
-            Track active settlements, escrow milestones, and transactions across portfolio holdings.
+            Track active settlements, escrow milestones, and transactions
           </p>
+        </div>
+
+        {/* 3 Stats Cards brought above to the left of New Deal */}
+        <div className="header-stats-center">
+          <div className="header-stat-box">
+            <div className="stat-box-top">
+              <div className="stat-box-icon">
+                <span className="material-symbols-outlined">account_balance</span>
+              </div>
+              <span className="stat-box-badge">ALL PIPELINE</span>
+            </div>
+            <div className="stat-box-details">
+              <span className="stat-box-num">{deals.length}</span>
+              <span className="stat-box-label">Total Deals</span>
+            </div>
+          </div>
+
+          <div className="header-stat-box sale">
+            <div className="stat-box-top">
+              <div className="stat-box-icon sale">
+                <span className="material-symbols-outlined">verified</span>
+              </div>
+              <span className="stat-box-badge sale">SETTLED</span>
+            </div>
+            <div className="stat-box-details">
+              <span className="stat-box-num sale">{doneDeals.length}</span>
+              <span className="stat-box-label">Done Deals</span>
+            </div>
+          </div>
+
+          <div className="header-stat-box rent">
+            <div className="stat-box-top">
+              <div className="stat-box-icon rent">
+                <span className="material-symbols-outlined">pending_actions</span>
+              </div>
+              <span className="stat-box-badge rent">IN ESCROW</span>
+            </div>
+            <div className="stat-box-details">
+              <span className="stat-box-num rent">{pendingDeals.length}</span>
+              <span className="stat-box-label">Pending</span>
+            </div>
+          </div>
         </div>
 
         <button
@@ -207,78 +244,6 @@ function Deals() {
           <span className="material-symbols-outlined">add</span>
           <span>New Deal</span>
         </button>
-      </div>
-
-      {/* Top 3 Metric Cards Grid */}
-      <div className="metric-cards-grid">
-        {/* Card 1: Gross Pipeline */}
-        <div className="metric-card">
-          <div className="metric-card-top">
-            <div className="metric-info">
-              <span className="metric-label">Gross Pipeline</span>
-              <div className="metric-count-large">
-                Total Deals: <span>{deals.length}</span>
-              </div>
-            </div>
-            <div className="metric-icon-box">
-              <span className="material-symbols-outlined">account_balance</span>
-            </div>
-          </div>
-          <div className="metric-card-bottom">
-            <div className="metric-amount">
-              ₹{totalVolume.toLocaleString('en-IN')}
-            </div>
-            <div className="metric-subtext">Total contractual asset value</div>
-          </div>
-        </div>
-
-        {/* Card 2: Settled Deals */}
-        <div className="metric-card settled">
-          <div className="metric-card-top">
-            <div className="metric-info">
-              <span className="metric-pill done">
-                <span className="metric-dot done" />
-                Settled &amp; Closed
-              </span>
-              <div className="metric-count-large">
-                Done Deals: <span>{doneDeals.length}</span>
-              </div>
-            </div>
-            <div className="metric-icon-box done">
-              <span className="material-symbols-outlined">verified</span>
-            </div>
-          </div>
-          <div className="metric-card-bottom">
-            <div className="metric-amount done">
-              ₹{doneVolume.toLocaleString('en-IN')}
-            </div>
-            <div className="metric-subtext">Successfully liquidated volume</div>
-          </div>
-        </div>
-
-        {/* Card 3: Pending Deals */}
-        <div className="metric-card pending">
-          <div className="metric-card-top">
-            <div className="metric-info">
-              <span className="metric-pill pending">
-                <span className="metric-dot pending" />
-                Awaiting Settlement
-              </span>
-              <div className="metric-count-large">
-                Pending Deals: <span>{pendingDeals.length}</span>
-              </div>
-            </div>
-            <div className="metric-icon-box pending">
-              <span className="material-symbols-outlined">pending_actions</span>
-            </div>
-          </div>
-          <div className="metric-card-bottom">
-            <div className="metric-amount pending">
-              ₹{pendingVolume.toLocaleString('en-IN')}
-            </div>
-            <div className="metric-subtext">Active transactions under escrow</div>
-          </div>
-        </div>
       </div>
 
       {/* Filter Tabs & Search Controls */}
@@ -592,7 +557,6 @@ function Deals() {
               <div className="modal-bottom-actions">
                 <div className="compliance-tag">
                   <span className="material-symbols-outlined">gavel</span>
-                  <span>Escrow &amp; legal settlement terms verified</span>
                 </div>
                 <div className="btn-actions-right">
                   <button

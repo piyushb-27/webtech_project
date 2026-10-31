@@ -21,74 +21,86 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
+  min-width: 240px;
 }
 
-.title-with-pill {
+.title-text-group {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.title-with-pill h1 {
+.title-text-group h1 {
   font-family: var(--font-headline);
-  font-size: 24px;
-  font-weight: 700;
+  font-size: 26px;
+  font-weight: 800;
   color: #161c21;
-  letter-spacing: -0.4px;
+  letter-spacing: -0.5px;
   margin: 0;
 }
 
 .tag-portfolio {
   background: #eff4fb;
   color: #006878;
-  border: 1px solid rgba(84, 172, 191, 0.4);
-  font-size: 11px;
-  font-weight: 600;
-  padding: 2px 10px;
+  border: 1px solid rgba(84, 172, 191, 0.45);
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 2.5px 9px;
   border-radius: 9999px;
   text-transform: uppercase;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.4px;
 }
 
 .page-subheading {
   font-size: 13px;
   color: #6e797c;
-  margin: 0;
+  margin: 2px 0 0 0;
 }
 
-/* Center stats between Title and Add button */
+/* Expanded Center Stats Cards */
 .header-stats-center {
   display: flex;
-  align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 14px;
+  flex: 1;
+  margin: 0 10px;
 }
 
 .header-stat-box {
   background: #ffffff;
   border: 1px solid #dde3ea;
-  border-radius: 10px;
-  padding: 8px 14px;
+  border-radius: 12px;
+  padding: 12px 20px;
   display: flex;
-  align-items: center;
-  gap: 10px;
-  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.03);
-  transition: all 0.15s ease;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+  min-width: 170px;
+  flex: 1;
+  box-shadow: 0 1px 3px rgba(16, 24, 40, 0.04);
+  transition: all 0.2s ease;
 }
 
 .header-stat-box:hover {
   border-color: #bec8cb;
-  box-shadow: 0 2px 6px rgba(0, 104, 120, 0.08);
+  box-shadow: 0 4px 12px rgba(0, 104, 120, 0.09);
+  transform: translateY(-1px);
 }
 
 .header-stat-box.sale {
-  border-color: rgba(167, 243, 208, 0.8);
+  border-color: rgba(167, 243, 208, 0.9);
   background: #fbfdfc;
 }
 
 .header-stat-box.rent {
-  border-color: rgba(186, 230, 253, 0.8);
+  border-color: rgba(186, 230, 253, 0.9);
   background: #fbfdff;
+}
+
+.stat-box-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .stat-box-icon {
@@ -117,17 +129,38 @@
   font-size: 17px;
 }
 
-.stat-box-text {
+.stat-box-badge {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  color: #6e797c;
+  background: #eff4fb;
+  padding: 2.5px 8px;
+  border-radius: 4px;
+}
+
+.stat-box-badge.sale {
+  color: #047857;
+  background: #ecfdf5;
+}
+
+.stat-box-badge.rent {
+  color: #0284c7;
+  background: #f0f9ff;
+}
+
+.stat-box-details {
   display: flex;
   flex-direction: column;
 }
 
 .stat-box-num {
   font-family: var(--font-headline);
-  font-size: 16px;
-  font-weight: 700;
+  font-size: 22px;
+  font-weight: 800;
   color: #161c21;
   line-height: 1.1;
+  letter-spacing: -0.3px;
 }
 
 .stat-box-num.sale {
@@ -139,10 +172,10 @@
 }
 
 .stat-box-label {
-  font-size: 11px;
+  font-size: 11.5px;
   color: #6e797c;
   font-weight: 500;
-  margin-top: 1px;
+  margin-top: 2px;
 }
 
 /* Add Property Button */

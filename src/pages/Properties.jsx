@@ -216,42 +216,51 @@ function Properties() {
       {/* Top Header & Context Stats */}
       <div className="page-header-row">
         <div className="page-heading">
-          <div className="title-with-pill">
+          <div className="title-text-group">
             <h1>Properties</h1>
-            <span className="tag-portfolio">Active Ledger</span>
+            <span className="tag-portfolio">Live Ledger</span>
           </div>
           <p className="page-subheading">
-            Portfolio Management & Live Listings
+            Real-time directory of residential &amp; commercial listings
           </p>
         </div>
 
-        {/* Prominent Stats Strip in the Center between Title and Add Button */}
+        {/* Expanded Executive Stat Cards */}
         <div className="header-stats-center">
           <div className="header-stat-box">
-            <div className="stat-box-icon">
-              <span className="material-symbols-outlined">apartment</span>
+            <div className="stat-box-top">
+              <div className="stat-box-icon">
+                <span className="material-symbols-outlined">domain</span>
+              </div>
+              <span className="stat-box-badge">ALL ASSETS</span>
             </div>
-            <div className="stat-box-text">
+            <div className="stat-box-details">
               <span className="stat-box-num">{properties.length}</span>
               <span className="stat-box-label">Total Properties</span>
             </div>
           </div>
 
           <div className="header-stat-box sale">
-            <div className="stat-box-icon sale">
-              <span className="material-symbols-outlined">sell</span>
+            <div className="stat-box-top">
+              <div className="stat-box-icon sale">
+                <span className="material-symbols-outlined">sell</span>
+              </div>
+              <span className="stat-box-badge sale">OUTRIGHT SALE</span>
             </div>
-            <div className="stat-box-text">
+            <div className="stat-box-details">
               <span className="stat-box-num sale">{totalSale}</span>
               <span className="stat-box-label">For Sale</span>
             </div>
           </div>
 
           <div className="header-stat-box rent">
-            <div className="stat-box-icon rent">
-              <span className="material-symbols-outlined">key</span>
+            <div className="stat-box-top">
+              <div className="stat-box-icon rent">
+                <span className="material-symbols-outlined">key</span>
+              </div>
+              <span className="stat-box-badge rent">RENTAL LEASE</span>
             </div>
-            <div className="stat-box-text">
+            <div className="stat-box-details">
               <span className="stat-box-num rent">{totalRent}</span>
               <span className="stat-box-label">For Rent</span>
             </div>
@@ -695,7 +704,6 @@ function Properties() {
               <div className="modal-bottom-actions">
                 <div className="compliance-tag">
                   <span className="material-symbols-outlined">verified_user</span>
-                  <span>Portfolio compliance validated</span>
                 </div>
                 <div className="btn-actions-right">
                   <button
