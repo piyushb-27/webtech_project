@@ -1,0 +1,337 @@
+/* ===== Landing Page Root ===== */
+.landing-root {
+  min-height: 100vh;
+  background-color: #f6faff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 20px;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* ===== Adjusted Wireframe Background ===== */
+.landing-bg-city {
+  position: absolute;
+  inset: 0;
+  background-image: url('/landing_bg_hires.png');
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  opacity: 0.88;
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity 0.4s ease;
+}
+
+/* Ambient Radial Softener */
+.landing-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(246, 250, 255, 0.3) 0%,
+    rgba(246, 250, 255, 0.52) 60%,
+    rgba(246, 250, 255, 0.82) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Ambient soft color glow blobs */
+.landing-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.blob-tl {
+  width: 440px;
+  height: 440px;
+  top: -140px;
+  left: -140px;
+  background: radial-gradient(circle, rgba(0, 104, 120, 0.12) 0%, transparent 70%);
+}
+
+.blob-br {
+  width: 460px;
+  height: 460px;
+  bottom: -150px;
+  right: -150px;
+  background: radial-gradient(circle, rgba(84, 172, 191, 0.12) 0%, transparent 70%);
+}
+
+/* ===== Floating Center Glass Card ===== */
+.landing-card {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 520px;
+  width: 100%;
+  padding: 40px 36px 32px;
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(221, 227, 234, 0.95);
+  border-radius: 24px;
+  box-shadow:
+    0 24px 48px -12px rgba(0, 104, 120, 0.08),
+    0 4px 16px rgba(16, 24, 40, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.landing-card:hover {
+  box-shadow:
+    0 32px 64px -16px rgba(0, 104, 120, 0.12),
+    0 8px 24px rgba(16, 24, 40, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+/* ===== Logo Block ===== */
+.landing-logo-wrap {
+  position: relative;
+  width: 88px;
+  height: 88px;
+  margin-bottom: 24px;
+}
+
+.landing-logo-box {
+  width: 88px;
+  height: 88px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, #006878 0%, #008796 100%);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    0 10px 26px rgba(0, 104, 120, 0.32),
+    0 2px 8px rgba(0, 104, 120, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  position: relative;
+  z-index: 2;
+  transition: transform 0.25s ease;
+}
+
+.landing-card:hover .landing-logo-box {
+  transform: translateY(-2px) scale(1.02);
+}
+
+.landing-logo-box .material-symbols-outlined {
+  font-size: 42px;
+}
+
+/* Subtle glow ring behind the logo */
+.landing-logo-ring {
+  position: absolute;
+  inset: -10px;
+  border-radius: 30px;
+  background: radial-gradient(circle, rgba(0, 104, 120, 0.16) 0%, transparent 70%);
+  z-index: 1;
+}
+
+/* ===== Brand Name ===== */
+.landing-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.landing-brand-name {
+  font-family: 'Manrope', sans-serif;
+  font-size: 42px;
+  font-weight: 800;
+  color: #161c21;
+  letter-spacing: -1.2px;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.landing-brand-subtitle {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  color: #006878;
+  background: rgba(0, 104, 120, 0.08);
+  border: 1px solid rgba(0, 104, 120, 0.2);
+  border-radius: 9999px;
+  padding: 3px 12px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* ===== Tagline ===== */
+.landing-tagline {
+  font-size: 14.5px;
+  color: #5a6669;
+  line-height: 1.6;
+  margin: 0 0 32px 0;
+}
+
+/* ===== Navigation Track ===== */
+.landing-nav-track {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+/* Navigation Pills */
+.landing-nav-pill {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #ffffff;
+  border: 1px solid #dde3ea;
+  border-radius: 14px;
+  padding: 15px 18px;
+  text-decoration: none;
+  transition: all 0.22s ease;
+  box-shadow: 0 1px 3px rgba(16, 24, 40, 0.04);
+  text-align: left;
+}
+
+.landing-nav-pill:hover {
+  border-color: #54acbf;
+  background: #ffffff;
+  box-shadow:
+    0 8px 24px rgba(0, 104, 120, 0.12),
+    0 2px 6px rgba(0, 104, 120, 0.08);
+  transform: translateY(-2px);
+}
+
+.landing-nav-pill:hover .landing-pill-arrow {
+  color: #006878;
+  transform: translateX(3px);
+}
+
+/* Icon wrap */
+.landing-pill-icon-wrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 11px;
+  background: #eff4fb;
+  color: #006878;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.2s, color 0.2s;
+}
+
+.landing-nav-pill:hover .landing-pill-icon-wrap {
+  background: #e0f2f5;
+  color: #00525f;
+}
+
+.landing-pill-icon-wrap.deals {
+  background: #ecfdf5;
+  color: #047857;
+}
+
+.landing-nav-pill:hover .landing-pill-icon-wrap.deals {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.landing-pill-icon-wrap .material-symbols-outlined {
+  font-size: 22px;
+}
+
+/* Text block */
+.landing-pill-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.landing-pill-label {
+  font-family: 'Manrope', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #161c21;
+  letter-spacing: -0.2px;
+}
+
+.landing-pill-desc {
+  font-size: 12px;
+  color: #6e797c;
+  font-weight: 400;
+}
+
+/* Arrow icon */
+.landing-pill-arrow {
+  font-size: 18px;
+  color: #bec8cb;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+/* ===== Footer Note ===== */
+.landing-footer-note {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+  color: #899699;
+  margin: 0;
+}
+
+.landing-footer-note .material-symbols-outlined {
+  font-size: 14px;
+  color: #a4b0b3;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 540px) {
+  .landing-card {
+    padding: 32px 20px 24px;
+    border-radius: 20px;
+  }
+
+  .landing-brand-name {
+    font-size: 34px;
+  }
+
+  .landing-logo-box {
+    width: 76px;
+    height: 76px;
+    border-radius: 18px;
+  }
+
+  .landing-logo-wrap {
+    width: 76px;
+    height: 76px;
+    margin-bottom: 20px;
+  }
+
+  .landing-logo-box .material-symbols-outlined {
+    font-size: 36px;
+  }
+
+  .landing-tagline {
+    font-size: 13.5px;
+    margin-bottom: 24px;
+  }
+
+  .landing-nav-pill {
+    padding: 13px 15px;
+    gap: 12px;
+  }
+
+  .landing-pill-icon-wrap {
+    width: 40px;
+    height: 40px;
+  }
+}
