@@ -419,16 +419,22 @@ function Properties() {
 
                   {/* Owner & Furnishing row */}
                   <div className="card-meta-row">
-                    <div className="meta-pair">
-                      <span className="meta-muted">Furnishing</span>
-                      <span className="meta-pill">{p.furnishing_status}</span>
+                    <div className="meta-chip owner">
+                      <span className="owner-avatar">{getInitials(p.owner_name)}</span>
+                      <div className="meta-chip-text">
+                        <span className="meta-chip-title">Owner</span>
+                        <span className="meta-chip-name">{p.owner_name}</span>
+                      </div>
                     </div>
-                    <div className="meta-pair">
-                      <span className="meta-muted">Owner</span>
-                      <span className="meta-owner">
-                        <span className="owner-avatar">{getInitials(p.owner_name)}</span>
-                        <span>{p.owner_name}</span>
+
+                    <div className="meta-chip furnish">
+                      <span className="furnish-badge-icon">
+                        <span className="material-symbols-outlined">chair</span>
                       </span>
+                      <div className="meta-chip-text">
+                        <span className="meta-chip-title">Furnishing</span>
+                        <span className="meta-chip-name">{p.furnishing_status}</span>
+                      </div>
                     </div>
                   </div>
                 </div>
