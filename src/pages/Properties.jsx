@@ -223,16 +223,38 @@ function Properties() {
           <p className="page-subheading">
             Portfolio Management & Live Listings
           </p>
-          <div className="quick-stats-strip">
-            <span className="stat-chip">
-              <strong className="stat-accent">{properties.length}</strong> Total
-            </span>
-            <span className="stat-chip">
-              <strong className="stat-accent sale">{totalSale}</strong> For Sale
-            </span>
-            <span className="stat-chip">
-              <strong className="stat-accent rent">{totalRent}</strong> For Rent
-            </span>
+        </div>
+
+        {/* Prominent Stats Strip in the Center between Title and Add Button */}
+        <div className="header-stats-center">
+          <div className="header-stat-box">
+            <div className="stat-box-icon">
+              <span className="material-symbols-outlined">apartment</span>
+            </div>
+            <div className="stat-box-text">
+              <span className="stat-box-num">{properties.length}</span>
+              <span className="stat-box-label">Total Properties</span>
+            </div>
+          </div>
+
+          <div className="header-stat-box sale">
+            <div className="stat-box-icon sale">
+              <span className="material-symbols-outlined">sell</span>
+            </div>
+            <div className="stat-box-text">
+              <span className="stat-box-num sale">{totalSale}</span>
+              <span className="stat-box-label">For Sale</span>
+            </div>
+          </div>
+
+          <div className="header-stat-box rent">
+            <div className="stat-box-icon rent">
+              <span className="material-symbols-outlined">key</span>
+            </div>
+            <div className="stat-box-text">
+              <span className="stat-box-num rent">{totalRent}</span>
+              <span className="stat-box-label">For Rent</span>
+            </div>
           </div>
         </div>
 

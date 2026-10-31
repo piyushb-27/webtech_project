@@ -373,20 +373,10 @@
   gap: 14px;
   box-shadow: 0 1px 3px rgba(16, 24, 40, 0.03);
   transition: all 0.2s ease;
-  border-left: 4px solid #dde3ea;
-}
-
-.deal-row-card.done {
-  border-left-color: #10b981;
-}
-
-.deal-row-card.pending {
-  border-left-color: #f59e0b;
 }
 
 .deal-row-card:hover {
   border-color: #bec8cb;
-  border-left-color: inherit;
   box-shadow: 0 4px 16px rgba(0, 104, 120, 0.06);
   transform: translateY(-1px);
 }

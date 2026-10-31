@@ -10,10 +10,11 @@
 /* Page Header Row */
 .page-header-row {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   gap: 20px;
   margin-bottom: 24px;
+  flex-wrap: wrap;
 }
 
 .page-heading {
@@ -55,36 +56,93 @@
   margin: 0;
 }
 
-.quick-stats-strip {
+/* Center stats between Title and Add button */
+.header-stats-center {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-top: 6px;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
-.stat-chip {
+.header-stat-box {
   background: #ffffff;
   border: 1px solid #dde3ea;
-  padding: 4px 10px;
-  border-radius: 7px;
-  font-size: 11.5px;
-  color: #3e484b;
-  display: inline-flex;
+  border-radius: 10px;
+  padding: 8px 14px;
+  display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 10px;
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.03);
+  transition: all 0.15s ease;
 }
 
-.stat-accent {
-  font-weight: 700;
-  color: #161c21;
+.header-stat-box:hover {
+  border-color: #bec8cb;
+  box-shadow: 0 2px 6px rgba(0, 104, 120, 0.08);
 }
 
-.stat-accent.sale {
+.header-stat-box.sale {
+  border-color: rgba(167, 243, 208, 0.8);
+  background: #fbfdfc;
+}
+
+.header-stat-box.rent {
+  border-color: rgba(186, 230, 253, 0.8);
+  background: #fbfdff;
+}
+
+.stat-box-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: #eff4fb;
+  color: #006878;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.stat-box-icon.sale {
+  background: #ecfdf5;
   color: #047857;
 }
 
-.stat-accent.rent {
+.stat-box-icon.rent {
+  background: #f0f9ff;
   color: #0284c7;
+}
+
+.stat-box-icon .material-symbols-outlined {
+  font-size: 17px;
+}
+
+.stat-box-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-box-num {
+  font-family: var(--font-headline);
+  font-size: 16px;
+  font-weight: 700;
+  color: #161c21;
+  line-height: 1.1;
+}
+
+.stat-box-num.sale {
+  color: #047857;
+}
+
+.stat-box-num.rent {
+  color: #0284c7;
+}
+
+.stat-box-label {
+  font-size: 11px;
+  color: #6e797c;
+  font-weight: 500;
+  margin-top: 1px;
 }
 
 /* Add Property Button */
