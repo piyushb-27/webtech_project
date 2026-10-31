@@ -71,6 +71,10 @@ function Deals() {
       showToast('Please select a property listing', 'error')
       return
     }
+    if (settledPropertyIds.has(Number(addForm.property_id))) {
+      showToast('This property already has a settled deal', 'error')
+      return
+    }
     setSubmitting(true)
     const { error } = await supabase.from('deals').insert({
       property_id: Number(addForm.property_id),
@@ -127,6 +131,14 @@ function Deals() {
 
   const doneDeals = deals.filter(d => d.deal_status === 'done')
   const pendingDeals = deals.filter(d => d.deal_status === 'pending')
+
+  // Properties that already have a settled (done) deal shouldn't appear in add deals
+  const settledPropertyIds = new Set(
+    doneDeals.map(d => d.property_id).filter(Boolean)
+  )
+  const availableProperties = properties.filter(
+    p => !settledPropertyIds.has(p.property_id)
+  )
 
   const totalVolume = deals.reduce(
     (acc, d) => acc + (Number(d.properties?.price) || 0),
@@ -239,7 +251,14 @@ function Deals() {
 
         <button
           className="btn-create-deal"
-          onClick={() => setShowAddModal(true)}
+          onClick={() => {
+            setAddForm({
+              property_id: '',
+              payment_method: 'bank_transfer',
+              deal_status: 'pending',
+            })
+            setShowAddModal(true)
+          }}
         >
           <span className="material-symbols-outlined">add</span>
           <span>New Deal</span>
@@ -466,8 +485,12 @@ function Deals() {
                     }
                     required
                   >
-                    <option value="">-- Choose a property from portfolio --</option>
-                    {properties.map(p => (
+                    <option value="">
+                      {availableProperties.length === 0
+                        ? '-- No available properties (all settled) --'
+                        : '-- Choose a property from portfolio --'}
+                    </option>
+                    {availableProperties.map(p => (
                       <option key={p.property_id} value={p.property_id}>
                         {p.title} — {p.city} (
                         {p.listing_type === 'sale' ? 'Sale' : 'Rent'}) — ₹

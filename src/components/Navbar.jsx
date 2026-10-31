@@ -1,11 +1,11 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import './Navbar.css'
 
 function Navbar() {
   return (
     <header className="navbar-header">
       <div className="navbar-container">
-        <div className="navbar-brand">
+        <Link to="/" className="navbar-brand" title="Back to Landing Page">
           <div className="brand-logo">
             <span className="material-symbols-outlined">domain</span>
           </div>
@@ -13,7 +13,7 @@ function Navbar() {
             <span className="brand-title">EstateHQ</span>
             <span className="brand-subtitle">Real Estate Manager</span>
           </div>
-        </div>
+        </Link>
 
         <nav className="nav-pill-group">
           <NavLink

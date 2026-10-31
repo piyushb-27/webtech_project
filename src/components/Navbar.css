@@ -28,6 +28,18 @@
   cursor: pointer;
   user-select: none;
   justify-self: start;
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.15s ease;
+}
+
+.navbar-brand:hover {
+  opacity: 0.9;
+}
+
+.navbar-brand:hover .brand-logo {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(0, 104, 120, 0.35);
 }
 
 .brand-logo {
@@ -40,6 +52,7 @@
   align-items: center;
   justify-content: center;
   box-shadow: 0 2px 6px rgba(0, 104, 120, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .brand-logo .material-symbols-outlined {
