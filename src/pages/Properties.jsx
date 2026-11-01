@@ -48,6 +48,7 @@ function Properties() {
   const [submitting, setSubmitting] = useState(false)
 
   const [deleteTarget, setDeleteTarget] = useState(null)
+  const [deleting, setDeleting] = useState(false)
   const [toast, setToast] = useState(null)
 
   useEffect(() => {
@@ -153,18 +154,59 @@ function Properties() {
   }
 
   async function handleDelete() {
-    if (!deleteTarget) return
-    const { error } = await supabase
-      .from('properties')
-      .delete()
-      .eq('property_id', deleteTarget.property_id)
+    if (!deleteTarget || deleting) return
+    setDeleting(true)
+    try {
+      // 1. Clean up any linked deals referencing this property to satisfy foreign key constraints
+      const { data: linkedDeals, error: dealsFetchErr } = await supabase
+        .from('deals')
+        .select('deal_id')
+        .eq('property_id', deleteTarget.property_id)
 
-    if (error) {
+      if (dealsFetchErr) {
+        console.error('Error fetching linked deals:', dealsFetchErr)
+      }
+
+      if (linkedDeals && linkedDeals.length > 0) {
+        const dealIds = linkedDeals.map(d => d.deal_id)
+        
+        // Clean up child payments & commission records if they exist
+        await supabase.from('payments').delete().in('deal_id', dealIds)
+        await supabase.from('commission_logs').delete().in('deal_id', dealIds)
+
+        // Delete the deals
+        const { error: dealsDeleteErr } = await supabase
+          .from('deals')
+          .delete()
+          .eq('property_id', deleteTarget.property_id)
+
+        if (dealsDeleteErr) {
+          console.error('Failed to remove associated deals:', dealsDeleteErr)
+          showToast(dealsDeleteErr.message || 'Failed to remove associated deals', 'error')
+          setDeleting(false)
+          return
+        }
+      }
+
+      // 2. Delete the property listing
+      const { error } = await supabase
+        .from('properties')
+        .delete()
+        .eq('property_id', deleteTarget.property_id)
+
+      if (error) {
+        console.error('Failed to delete property listing:', error)
+        showToast(error.message || 'Failed to delete property listing', 'error')
+      } else {
+        showToast('Property listing removed from portfolio')
+        setDeleteTarget(null)
+        fetchData()
+      }
+    } catch (err) {
+      console.error('Unexpected error during property deletion:', err)
       showToast('Failed to delete property listing', 'error')
-    } else {
-      showToast('Property listing removed from portfolio')
-      setDeleteTarget(null)
-      fetchData()
+    } finally {
+      setDeleting(false)
     }
   }
 
@@ -751,13 +793,14 @@ function Properties() {
             <p>
               Are you sure you want to delete{' '}
               <strong>{deleteTarget.title}</strong> from the active portfolio?
-              This action cannot be undone.
+              Any linked deal transactions will also be cleared.
             </p>
             <div className="confirm-actions-row">
               <button
                 type="button"
                 className="btn-modal-cancel"
                 onClick={() => setDeleteTarget(null)}
+                disabled={deleting}
               >
                 Cancel
               </button>
@@ -765,8 +808,9 @@ function Properties() {
                 type="button"
                 className="btn-confirm-delete"
                 onClick={handleDelete}
+                disabled={deleting}
               >
-                Yes, Delete Listing
+                {deleting ? 'Deleting...' : 'Yes, Delete Listing'}
               </button>
             </div>
           </div>

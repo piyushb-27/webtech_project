@@ -1192,8 +1192,14 @@
   transition: all 0.15s ease;
 }
 
-.btn-confirm-delete:hover {
+.btn-confirm-delete:hover:not(:disabled) {
   background: #b91c1c;
+}
+
+.btn-confirm-delete:disabled,
+.confirm-actions-row .btn-modal-cancel:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 /* Toast Notification (Floating bottom-right) */
