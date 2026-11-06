@@ -1205,7 +1205,7 @@
 /* Toast Notification (Floating bottom-right) */
 .toast-notification {
   position: fixed;
-  bottom: 24px;
+  bottom: calc(var(--footer-height) + env(safe-area-inset-bottom, 0px) + 16px);
   right: 24px;
   z-index: 1000;
   background: rgba(33, 49, 69, 0.95);

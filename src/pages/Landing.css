@@ -1,6 +1,6 @@
 /* ===== Landing Page Root ===== */
 .landing-root {
-  min-height: 100vh;
+  flex: 1;
   background-color: #f6faff;
   display: flex;
   align-items: center;

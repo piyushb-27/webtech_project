@@ -24,7 +24,7 @@ function Landing() {
 
         {/* Brand Name */}
         <div className="landing-brand">
-          <h1 className="landing-brand-name">EstateHQ</h1>
+          <h1 className="landing-brand-name">Estora</h1>
           <span className="landing-brand-subtitle">Real Estate Manager</span>
         </div>
 

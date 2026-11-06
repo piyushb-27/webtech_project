@@ -17,6 +17,14 @@ function AppShell() {
         <Route path="/properties" element={<Properties />} />
         <Route path="/deals" element={<Deals />} />
       </Routes>
+      <footer className="app-footer">
+        <p className="app-footer-credit">
+          <span className="app-footer-label">Made by</span>{' '}
+          <span className="app-footer-author">Vandita Nawani <span className="app-footer-id">(24BIT167)</span></span>{' '}
+          <span className="app-footer-label">and</span>{' '}
+          <span className="app-footer-author">Piyush Bajaj <span className="app-footer-id">(24BIT181)</span></span>
+        </p>
+      </footer>
     </>
   )
 }

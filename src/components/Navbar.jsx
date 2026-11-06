@@ -10,7 +10,7 @@ function Navbar() {
             <span className="material-symbols-outlined">domain</span>
           </div>
           <div className="brand-text">
-            <span className="brand-title">EstateHQ</span>
+            <span className="brand-title">Estora</span>
             <span className="brand-subtitle">Real Estate Manager</span>
           </div>
         </Link>
